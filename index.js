@@ -12,8 +12,8 @@ class ItemIterator {
   constructor(item) {
     /** @type {T|null} */
     this.item = item
-    /** @type {Number} */
-    this.first = 1
+    /** @type {boolean} */
+    this.first = true
   }
 
   /**
@@ -24,16 +24,19 @@ class ItemIterator {
     // If there's something to iterate over
     if (this.item) {
       // Handle first item
-      if (this.first && this.first--) return {value: this.item, done: false}
+      if (this.first) {
+        this.first = false
+        return { value: this.item, done: false }
+      }
 
       // Handle next items
       if (this.item.next) {
         this.item = this.item.next
-        return {value: this.item, done: false}
+        return { value: this.item, done: false }
       }
     }
 
-    return {value: null, done: true}
+    return { value: null, done: true }
   }
 }
 
