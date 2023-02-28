@@ -26,17 +26,17 @@ class ItemIterator {
       // Handle first item
       if (this.first) {
         this.first = false
-        return { value: this.item, done: false }
+        return {value: this.item, done: false}
       }
 
       // Handle next items
       if (this.item.next) {
         this.item = this.item.next
-        return { value: this.item, done: false }
+        return {value: this.item, done: false}
       }
     }
 
-    return { value: null, done: true }
+    return {value: null, done: true}
   }
 }
 
